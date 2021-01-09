@@ -6,6 +6,7 @@ services:
     build: ./docker
     ports:
       - 80:80
+      - 8000:8000
     privileged: true
     volumes:
       - ./server:/var/www/html
