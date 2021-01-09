@@ -9,6 +9,7 @@ services:
     privileged: true
     volumes:
       - ./server:/var/www/html
+      - ./laravel:/usr/local/laravel_project
 
   db:
     image: mysql:5.7
