@@ -24,3 +24,19 @@ Route::get('cart', ['uses' => 'ProductsController@showCart', 'as' => 'cartProduc
 
 // Delete item from cart
 Route::get('product/deleteItemFromCart/{id}', ['uses' => 'ProductsController@deleteItemFromCart', 'as' => 'DeleteItemFromCart']);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Admin Panel
+Route::get('admin/products', ['uses' => 'Admin\AdminProductsController@index', 'as' => 'adminDisplayProducts']);
+
+// display edit product form
+Route::get('admin/editProductForm/{id}', ['uses' => 'Admin\AdminProductsController@editProductForm', 'as' => 'adminEditProductForm']);
+
+// display edit product image form
+Route::get('admin/editProductImageForm/{id}', ['uses' => 'Admin\AdminProductsController@editProductImageForm', 'as' => 'adminEditProductImageForm']);
+
+// update product image
+Route::post('admin/updateProductImage/{id}', ['uses' => 'Admin\AdminProductsController@updateProductImage', 'as' => 'adminUpdateProductImage']);
