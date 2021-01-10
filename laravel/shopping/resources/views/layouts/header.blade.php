@@ -89,7 +89,11 @@
                             <li><a href=""><i class="fa fa-user"></i> Account</a></li>
                             <li><a href=""><i class="fa fa-star"></i> Wishlist</a></li>
                             <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="{{route('cartProducts')}}"><i class="fa fa-shopping-cart"></i>
+                                    @if(Session::has('cart') && Session::get('cart')->totalQuantity != 0)
+                                        <span class="cart-with-numbers">{{Session::get('cart')->totalQuantity}}</span>
+                                    @endif
+                                    Cart</a></li>
                             <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
