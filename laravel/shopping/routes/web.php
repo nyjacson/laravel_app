@@ -15,8 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// show all products
 Route::get('products', ['uses' => 'ProductsController@index', 'as' => 'allProducts']);
 
+// Mens
+Route::get('products/men', ['uses' => 'ProductsController@menProducts', 'as' => 'menProducts']);
+
+// Womens
+Route::get('products/women', ['uses' => 'ProductsController@womenProducts', 'as' => 'womenProducts']);
+
+// search
+Route::get('search', ['uses' => 'ProductsController@search', 'as' => 'searchProducts']);
+
+// add to cart
 Route::get('product/addToCart/{id}', ['uses' => 'ProductsController@addProductToCart', 'as' => 'AddToCartProduct']);
 
 // show cart items

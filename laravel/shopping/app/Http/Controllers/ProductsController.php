@@ -11,7 +11,24 @@ class ProductsController extends Controller
 {
     public function index() {
 
-        $products = Product::all();
+        $products = Product::paginate(3);
+        return view('allproducts', compact("products"));
+    }
+
+    public function menProducts() {
+        $products = DB::table('products')->where('type', 'men')->get();
+        return view('menProducts', compact("products"));
+    }
+
+    public function womenProducts() {
+        $products = DB::table('products')->where('type', 'women')->get();
+        return view('womenProducts', compact("products"));
+    }
+
+    public function search(Request $request) {
+        $searchText = $request->get('searchText');
+        // this is how to use pagination with where
+        $products = Product::where('name', "like", $searchText."%")->paginate(3);
         return view('allproducts', compact("products"));
     }
 

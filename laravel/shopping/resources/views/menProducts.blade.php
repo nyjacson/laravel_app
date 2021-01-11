@@ -38,9 +38,7 @@
                 </div>
                 <div class="col-sm-3">
                     <div class="search_box pull-right">
-                        <form action="search" method="get">
-                            <input type="text" name="searchText" placeholder="Search"/>
-                        </form>
+                        <input type="text" placeholder="Search"/>
                     </div>
                 </div>
             </div>
@@ -196,8 +194,6 @@
                         @endforeach
 
                     </div><!--features_items-->
-
-                    {{$products->links()}}
 
                     <div class="category-tab"><!--category-tab-->
                         <div class="col-sm-12">
