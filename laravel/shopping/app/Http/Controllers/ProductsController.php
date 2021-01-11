@@ -105,13 +105,53 @@ class ProductsController extends Controller
         return redirect()->route('cartProducts');
     }
 
-    public function createOrder() {
+//    public function createOrder() {
+//        $cart = Session::get('cart');
+//
+//        // cart is not empty
+//        if($cart) {
+//            $date = date('Y-m-d H:i:s');
+//            $newOrderArray = array('status' => 'on_hold', 'date' => $date, 'del_date' => $date, 'price' => $cart->totalPrice);
+//            $created_order = DB::table('orders')->insert($newOrderArray);
+//            $order_id = DB::getPdo()->lastInsertId();
+//
+//            foreach ($cart->items as $cart_item) {
+//                $item_id = $cart_item['data']['id'];
+//                $item_name = $cart_item['data']['name'];
+//                $item_price = $cart_item['data']['price'];
+//                $newItemsInCurrentOrder = array('item_id' => $item_id, 'order_id' => $order_id, 'item_name' => $item_name, 'item_price' => $item_price);
+//                $created_order_items = DB::table('order_items')->insert($newItemsInCurrentOrder);
+//            }
+//
+//            // delete cart
+//            Session::forget('cart');
+//            Session::flush();
+//            return redirect()->route('allProducts')->withsuccess('Thanks for choosing us');
+//
+//        } else {
+//
+//            return redirect()->route('allProducts');
+//        }
+//    }
+
+    public function checkoutProducts() {
+        return view('checkoutProducts');
+    }
+
+    public function createNewOrder(Request $request) {
         $cart = Session::get('cart');
+        $first_name = $request->input('first_name');
+        $last_name = $request->input('last_name');
+        $address = $request->input('address');
+        $zip = $request->input('zip');
+        $phone = $request->input('phone');
+        $email = $request->input('email');
 
         // cart is not empty
         if($cart) {
             $date = date('Y-m-d H:i:s');
-            $newOrderArray = array('status' => 'on_hold', 'date' => $date, 'del_date' => $date, 'price' => $cart->totalPrice);
+            $newOrderArray = array('status' => 'on_hold', 'date' => $date, 'del_date' => $date, 'price' => $cart->totalPrice, 'first_name' => $first_name,
+                'last_name' => $last_name, 'zip' => $zip, 'address' => $address, 'email' => $email, 'phone' => $phone);
             $created_order = DB::table('orders')->insert($newOrderArray);
             $order_id = DB::getPdo()->lastInsertId();
 

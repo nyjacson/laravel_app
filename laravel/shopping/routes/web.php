@@ -40,8 +40,14 @@ Route::get('product/increaseSingleProduct/{id}', ['uses' => 'ProductsController@
 // decrease single product in cart
 Route::get('product/decreaseSingleProduct/{id}', ['uses' => 'ProductsController@decreaseSingleProduct', 'as' => 'decreaseSingleProduct']);
 
-// create an order
-Route::get('product/createOrder', ['uses' => 'ProductsController@createOrder', 'as' => 'createOrder']);
+// create an order -- no more use
+//Route::get('product/createOrder', ['uses' => 'ProductsController@createOrder', 'as' => 'createOrder']);
+
+// checkout page
+Route::get('product/checkoutProducts', ['uses' => 'ProductsController@checkoutProducts', 'as' => 'checkoutProducts']);
+
+// Process checkout page
+Route::post('createNewOrder', ['uses' => 'ProductsController@createNewOrder', 'as' => 'createNewOrder']);
 
 // User Authentication
 Auth::routes();
