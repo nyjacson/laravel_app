@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', ['uses' => 'ProductsController@index', 'as' => 'allProducts']);
 
 // show all products
 Route::get('products', ['uses' => 'ProductsController@index', 'as' => 'allProducts']);
@@ -35,6 +33,12 @@ Route::get('cart', ['uses' => 'ProductsController@showCart', 'as' => 'cartProduc
 
 // Delete item from cart
 Route::get('product/deleteItemFromCart/{id}', ['uses' => 'ProductsController@deleteItemFromCart', 'as' => 'DeleteItemFromCart']);
+
+// increase single product in cart
+Route::get('product/increaseSingleProduct/{id}', ['uses' => 'ProductsController@increaseSingleProduct', 'as' => 'increaseSingleProduct']);
+
+// decrease single product in cart
+Route::get('product/decreaseSingleProduct/{id}', ['uses' => 'ProductsController@decreaseSingleProduct', 'as' => 'decreaseSingleProduct']);
 
 Auth::routes();
 
