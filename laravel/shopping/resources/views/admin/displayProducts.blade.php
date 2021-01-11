@@ -33,7 +33,7 @@
 
                     <td><a href="{{ route('adminEditProductImageForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit Image</a></td>
                     <td><a href="{{ route('adminEditProductForm',['id' => $product['id'] ])}}" class="btn btn-primary">Edit</a></td>
-{{--                    <td><a href="{{ route('adminDeleteProduct',['id' => $product['id']])}}"  class="btn btn-warning">Remove</a></td>--}}
+                    <td><a href="{{ route('adminDeleteProduct',['id' => $product['id']])}}"  class="btn btn-warning">Remove</a></td>
 
 
                 </tr>
