@@ -49,6 +49,10 @@ Route::get('product/checkoutProducts', ['uses' => 'ProductsController@checkoutPr
 // Process checkout page
 Route::post('createNewOrder', ['uses' => 'ProductsController@createNewOrder', 'as' => 'createNewOrder']);
 
+// payment page
+Route::get('payment/paymentPage', ['uses' => 'payment\PaymentsController@showPaymentPage', 'as' => 'showPaymentPage']);
+
+
 // User Authentication
 Auth::routes();
 

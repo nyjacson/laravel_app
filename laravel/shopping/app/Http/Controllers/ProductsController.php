@@ -166,8 +166,11 @@ class ProductsController extends Controller
             // delete cart
             Session::forget('cart');
             Session::flush();
-            return redirect()->route('allProducts')->withsuccess('Thanks for choosing us');
 
+            $payment_info = $newOrderArray;
+            $request->session()->put('payment_info', $payment_info);
+            return redirect()->route("showPaymentPage");
+//            return redirect()->route('allProducts')->withsuccess('Thanks for choosing us');
         } else {
 
             return redirect()->route('allProducts');
